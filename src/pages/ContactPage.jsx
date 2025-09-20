@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Card from "../components/ui/Card";
-import Form from "../components/form";
+import Form from "../components/form/Form.jsx";
+
 
 const contactCards = [
   {

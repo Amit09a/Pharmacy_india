@@ -7,7 +7,6 @@ import ProductsPage from './pages/ProductsPage';
 import BlogsPage from './pages/BlogsPage';
 import ContactPage from './pages/ContactPage';
 import ManufacturingPage from './pages/ManufacturingPage';
-import FranchisePage from './pages/FranchisePage';
 import Navbar from './components/common/Navbar/Navbar';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route path="/blogs" element={<BlogsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/manufacturing" element={<ManufacturingPage />} />
-        <Route path="/franchise" element={<FranchisePage />} />
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>
     </Layout>

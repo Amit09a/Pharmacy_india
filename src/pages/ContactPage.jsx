@@ -1,8 +1,9 @@
-import React from "react";
-import Card from "../components/ui/Card"; // Your card component
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Card from "../components/ui/Card";
 import Form from "../components/form/form";
 
-// Add images for the cards (replace with your actual URLs)
 const contactCards = [
   {
     image: "https://www.indizenpharma.com/wp-content/uploads/2024/07/placeholder.webp",
@@ -49,62 +50,77 @@ const contactCards = [
   },
 ];
 
-const ContactUsPage = () => (
-  <div className="bg-blue-50 h-[1200px]">
-    {/* Banner */}
-    <section className="relative h-56 flex items-center mt-10"
-    >
-      <img
-        className="absolute inset-0 w-full h-full object-cover opacity-60 mt-10 pt-10"
-        src="/assets/images/Contact-Us-Breadcrumb-.webp"
-        alt="Banner"
-      />
-      <div className="z-10 relative px-10 max-w-7xl mx-auto w-full flex flex-col justify-center h-full">
-        <nav className="mb-2 text-gray-700 text-lg">
-          <a href="/" className="underline text-blue-700 font-medium">
-            Home
-          </a>{" "}
-          / Contact us
-        </nav>
-      </div>
-    </section>
+const ContactUsPage = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 900,
+      easing: "ease-out-cubic",
+      offset: 80,
+      once: true,
+    });
+  }, []);
 
-    {/* Cards Section */}
-    <section className="max-w-7xl mx-auto px-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-10">
-        {contactCards.map((card, idx) => (
-          <Card
-            key={card.title + idx}
-            image={card.image}
-            title={card.title}
-            description={card.description}
-            className="bg-white rounded-xl shadow-lg p-8 text-center border-b-4 border-blue-400"
-          />
-        ))}
-      </div>
-    </section>
-
-    {/* Contact Form Section */}
-    <section className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row gap-12 items-center">
-      <div className="flex-1 mb-100">
-        <h2 className="text-xl font-semibold mt-1">Get in Touch</h2>
-        <div className="border-t border-gray-300 mb-4"></div>
-        <h3 className="text-3xl font-bold mb-6 leading-tight">
-          For expert PCD pharma franchise solutions tailored to your healthcare
-          needs, contact us today. We&apos;re here to partner with you for
-          success.
-        </h3>
+  return (
+    <div className="bg-blue-50">
+      <section
+        className="relative h-56 flex items-center mt-10 overflow-hidden"
+        data-aos="slide-down"
+      >
         <img
-          src="https://www.indizenpharma.com/wp-content/uploads/2024/07/Get-in-Touch-2.webp"
-          className="rounded-xl"
-          alt="Get in Touch"
+          className="absolute inset-0 w-full h-full object-cover opacity-60 mt-10 pt-10"
+          src="/assets/images/Contact-Us-Breadcrumb-.webp"
+          alt="Banner"
         />
-      </div>
-      <div className="flex-1 w-full mb-50">
-        <Form />
-      </div>
-    </section>
-  </div>
-);
+        <div className="z-10 relative px-10 max-w-7xl mx-auto w-full flex flex-col justify-center h-full">
+          <nav className="mb-2 text-gray-700 text-lg">
+            <a href="/" className="underline text-blue-700 font-medium">
+              Home
+            </a>{" "}
+            / Contact us
+          </nav>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-10">
+          {contactCards.map((card, idx) => (
+            <div
+              key={card.title + idx}
+              data-aos="flip-up"
+              data-aos-delay={idx * 120}
+            >
+              <Card
+                image={card.image}
+                title={card.title}
+                description={card.description}
+                className="bg-white rounded-xl shadow-lg p-8 text-center border-b-4 border-blue-400"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row gap-12 items-center">
+        <div className="flex-1" data-aos="zoom-out-right">
+          <h2 className="text-xl font-semibold mt-1">Get in Touch</h2>
+          <div className="border-t border-gray-300 mb-4"></div>
+          <h3 className="text-3xl font-bold mb-6 leading-tight">
+            For expert PCD pharma franchise solutions tailored to your healthcare
+            needs, contact us today. We&apos;re here to partner with you for
+            success.
+          </h3>
+          <img
+            src="https://www.indizenpharma.com/wp-content/uploads/2024/07/Get-in-Touch-2.webp"
+            className="rounded-xl"
+            alt="Get in Touch"
+          />
+        </div>
+        <div className="flex-1 w-full" data-aos="zoom-out-left" data-aos-delay="100">
+          <Form />
+        </div>
+      </section>
+    </div>
+  );
+};
 
 export default ContactUsPage;

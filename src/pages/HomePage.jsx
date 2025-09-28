@@ -7,7 +7,6 @@ import "swiper/css/pagination";
 import { motion } from "framer-motion";
 import { HashLink } from "react-router-hash-link";
 
-// ✅ Lazy load sections
 const FeaturesSection = lazy(() => import("../components/sections/FeaturesSection/FeaturesSection"));
 const ProductCategoriesSection = lazy(() => import("../components/sections/ProductsSection/ProductsSection"));
 const QualitySection = lazy(() => import("../components/sections/QualitySection/QualitySection"));
